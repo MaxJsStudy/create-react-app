@@ -1,7 +1,10 @@
-# react-scripts
+# mpa-react-scripts
 
-This package includes scripts and configuration used by [Create React App](https://github.com/facebook/create-react-app).<br>
-Please refer to its documentation:
+基于 [react scripts](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts) 改造的多页应用
+* 添加了 `eslint`、`less` 相关配置  
+* 支持多页面应用  
+* 添加了 `page` 和 `component` 文件夹  
+    * `page` 目录用于存放多页入口文件，访问路由对应 `page` 的目录结构
+* 为 `src` 目录添加 `alias` 为 `@`  
 
-- [Getting Started](https://github.com/facebook/create-react-app/blob/master/README.md#getting-started) – How to create a new app.
-- [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) – How to develop apps bootstrapped with Create React App.
+`create-react-app <project name> --scripts-version mpa-react-scripts`

@@ -1,14 +1,19 @@
 {
-  "name": "react-scripts",
-  "version": "2.1.1",
-  "description": "Configuration and scripts for Create React App.",
-  "repository": "facebook/create-react-app",
+  "name": "mpa-react-scripts",
+  "version": "0.0.7",
+  "description": "Configuration and scripts for multiple page application, powered by Create React App.",
+  "keywords": [
+    "mpa",
+    "multiple page application",
+    "react-scripts"
+  ],
+  "repository": "minesaner/create-react-app/tree/mpa",
   "license": "MIT",
   "engines": {
     "node": ">=6"
   },
   "bugs": {
-    "url": "https://github.com/facebook/create-react-app/issues"
+    "url": "https://github.com/minesaner/create-react-app/issues"
   },
   "files": [
     "bin",
