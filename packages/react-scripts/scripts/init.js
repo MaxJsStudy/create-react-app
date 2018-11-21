@@ -102,9 +102,9 @@ module.exports = function(
   };
 
   // Setup the eslint config
-  appPackage.eslintConfig = {
-    extends: 'react-app',
-  };
+  // appPackage.eslintConfig = {
+  //   extends: 'react-app',
+  // };
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers;
@@ -149,6 +149,20 @@ module.exports = function(
       const data = fs.readFileSync(path.join(appPath, 'gitignore'));
       fs.appendFileSync(path.join(appPath, '.gitignore'), data);
       fs.unlinkSync(path.join(appPath, 'gitignore'));
+    } else {
+      throw err;
+    }
+  }
+
+  try {
+    fs.moveSync(
+      path.join(appPath, 'eslintrc.js'),
+      path.join(appPath, '.eslintrc.js'),
+      []
+    );
+  } catch (err) {
+    if (err.code === 'EEXIST') {
+      fs.unlinkSync(path.join(appPath, 'eslintrc.js'));
     } else {
       throw err;
     }
