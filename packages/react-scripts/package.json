@@ -1,13 +1,17 @@
 {
   "name": "mpa-react-scripts",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Configuration and scripts for multiple page application, powered by Create React App.",
   "keywords": [
     "mpa",
     "multiple page application",
     "react-scripts"
   ],
-  "repository": "minesaner/create-react-app/tree/mpa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minesaner/create-react-app.git"
+  },
+  "homepage": "https://github.com/minesaner/create-react-app/tree/mpa/packages/react-scripts",
   "license": "MIT",
   "engines": {
     "node": ">=6"
