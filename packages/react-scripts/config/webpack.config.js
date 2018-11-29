@@ -28,6 +28,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const getEntry = require('./getEntry')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
@@ -124,44 +125,7 @@ module.exports = function(webpackEnv) {
     }
     return loaders;
   };
-
-  const webpackHotDevClient = require.resolve('react-dev-utils/webpackHotDevClient');
-  function getEntryFiles(entryPath) {
-    const dirs = fs.readdirSync(entryPath, 'utf8');
-  
-    return dirs.reduce((result, dir) => {
-      dir = path.resolve(entryPath, dir);
-      const stat = fs.statSync(dir);
-  
-      if (stat.isDirectory()) {
-        result = result.concat(getEntryFiles(dir));
-      } else {
-        if (['.js', '.jsx'].includes(path.extname(dir))) {
-          result.push(dir);
-        }
-      }
-  
-      return result;
-    }, []);
-  }
-  const appEntries = getEntryFiles(paths.appPage);
-  const entries = appEntries.reduce((entryObject, entry) => {
-    let relativePath = path.relative(paths.appPage, entry);
-    const extname = path.extname(relativePath);
-    relativePath = relativePath.slice(0, relativePath.lastIndexOf(extname));
-
-    if (isEnvProduction) {
-      entryObject[relativePath] = entry;
-    } else {
-      entryObject[relativePath] = [
-        webpackHotDevClient,
-        entry,
-      ];
-    }
-
-    return entryObject;
-  }, {});
-
+  const entries = getEntry(isEnvProduction);
   const htmlPlugins = Object.keys(entries).map(entry => {
     return new HtmlWebpackPlugin(
       Object.assign(

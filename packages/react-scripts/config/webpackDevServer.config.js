@@ -13,6 +13,7 @@ const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const paths = require('./paths');
+const htmlExtMiddleware = require('./htmlExtMiddleware');
 const fs = require('fs');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
@@ -102,6 +103,7 @@ module.exports = function(proxy, allowedHost) {
       // it used the same host and port.
       // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
+      app.use(htmlExtMiddleware());
     },
   };
 };
