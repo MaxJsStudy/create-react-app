@@ -121,9 +121,10 @@ function startServer(isReload) {
         })
         
         if (pageErrors.length) {
-          initial = false;
-          devServer.close();
-          startServer(true);
+          devServer.close(() => {
+            initial = false;
+            startServer(true);
+          });
         }
   
         if (!initial) {
