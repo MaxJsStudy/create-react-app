@@ -277,6 +277,7 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        '@': paths.appSrc,
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -312,7 +313,7 @@ module.exports = function(webpackEnv) {
             {
               options: {
                 fix: true,
-                formatter: require.resolve('react-dev-utils/eslintFormatter'),
+                formatter: require('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
               },
               loader: require.resolve('eslint-loader'),
