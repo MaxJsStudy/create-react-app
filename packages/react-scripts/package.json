@@ -1,14 +1,25 @@
 {
-  "name": "react-scripts",
-  "version": "2.1.1",
-  "description": "Configuration and scripts for Create React App.",
-  "repository": "facebook/create-react-app",
+  "name": "antd-react-scripts",
+  "keywords": [
+    "antd",
+    "react-scripts",
+    "react scripts",
+    "antd-react-scripts",
+    "antd react scripts"
+  ],
+  "version": "0.0.2",
+  "description": "Configuration and scripts for Create React App and antd.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minesaner/create-react-app.git"
+  },
+  "homepage": "https://github.com/minesaner/create-react-app/tree/antd/packages/react-scripts",
   "license": "MIT",
   "engines": {
     "node": ">=6"
   },
   "bugs": {
-    "url": "https://github.com/facebook/create-react-app/issues"
+    "url": "https://github.com/minesaner/create-react-app/issues"
   },
   "files": [
     "bin",
@@ -30,6 +41,7 @@
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
+    "babel-plugin-import": "1.11.0",
     "babel-plugin-named-asset-import": "^0.2.3",
     "babel-preset-react-app": "^6.1.0",
     "bfj": "6.1.1",

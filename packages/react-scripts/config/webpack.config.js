@@ -80,6 +80,10 @@ module.exports = function(webpackEnv) {
     javascriptEnabled: true,
   }
 
+  const themePath = path.resolve(process.cwd(), 'antd.theme.js');
+  if (fs.existsSync(themePath)) {
+    lessLoaderOptions.modifyVars = require(themePath);
+  }
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor, options) => {
     const loaders = [
@@ -383,6 +387,14 @@ module.exports = function(webpackEnv) {
                         },
                       },
                     },
+                  ],
+                  [
+                    'import',
+                    {
+                      libraryName: 'antd',
+                      libraryDirectory: 'es',
+                      style: true,
+                    }
                   ],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).

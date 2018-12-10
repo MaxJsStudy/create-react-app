@@ -209,6 +209,24 @@ module.exports = function(
     }
   }
 
+  // Install antd
+  if (!isAntdInstalled(appPackage)) {
+    console.log(`Installing ${chalk.cyan('antd')} using ${command}...`);
+    console.log()
+
+    const args = (
+      useYarn ?
+      ['add'] :
+      ['install', '--save']
+    )
+    args.push('antd');
+    const proc = spawn.sync(command, args, {stdio: 'inherit'});
+    if (proc.status !== 0) {
+      console.log(`\`${command} ${args.join(' ')}\` failed`);
+      return;
+    }
+  }
+
   if (useTypeScript) {
     verifyTypeScriptSetup();
   }
@@ -279,4 +297,9 @@ function isReactInstalled(appPackage) {
     typeof dependencies.react !== 'undefined' &&
     typeof dependencies['react-dom'] !== 'undefined'
   );
+}
+
+function isAntdInstalled(appPackage) {
+  const dependencies = appPackage.dependencies || {};
+  return typeof dependencies.antd !== 'undefined';
 }
