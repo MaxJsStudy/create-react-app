@@ -76,9 +76,12 @@ module.exports = function(webpackEnv) {
     : isEnvDevelopment && '';
   // Get environment variables to inject into our app.
   const env = getClientEnvironment(publicUrl);
+  const lessLoaderOptions = {
+    javascriptEnabled: true,
+  }
 
   // common function to get style loaders
-  const getStyleLoaders = (cssOptions, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor, options) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
@@ -119,6 +122,7 @@ module.exports = function(webpackEnv) {
         loader: require.resolve(preProcessor),
         options: {
           sourceMap: isEnvProduction && shouldUseSourceMap,
+          ...options,
         },
       });
     }
@@ -500,7 +504,8 @@ module.exports = function(webpackEnv) {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                 },
-                'less-loader'
+                'less-loader',
+                lessLoaderOptions,
               ),
               sideEffects: true,
             },
@@ -514,7 +519,8 @@ module.exports = function(webpackEnv) {
                   modules: true,
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
-                'less-loader'
+                'less-loader',
+                lessLoaderOptions,
               ),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
