@@ -259,7 +259,7 @@ module.exports = function(webpackEnv) {
         chunks: 'all',
         name: false,
       },
-      // Keep the runtime chunk seperated to enable long term caching
+      // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
       runtimeChunk: true,
     },
@@ -675,8 +675,8 @@ module.exports = function(webpackEnv) {
             '!**/*.json',
             '!**/__tests__/**',
             '!**/?(*.)(spec|test).*',
-            '!src/setupProxy.js',
-            '!src/setupTests.*',
+            '!**/src/setupProxy.*',
+            '!**/src/setupTests.*',
           ],
           watch: paths.appSrc,
           silent: true,
