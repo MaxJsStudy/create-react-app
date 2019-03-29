@@ -13,7 +13,7 @@ module.exports = {
     indent: [1, 2],
     semi: [1, 'never'],
     'no-alert': 1,
-    'no-console': 1,
+    'no-console': 0,
     'default-case': 1,
     'comma-dangle': [1, 'always-multiline'],
     'no-multi-spaces': [1, {ignoreEOLComments: false}],
