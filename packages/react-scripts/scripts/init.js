@@ -135,6 +135,17 @@ module.exports = function(
     return;
   }
 
+  // Copy the shared files for the user
+  const templateSharedPath = path.join(ownPath, 'template-shared');
+  if (fs.existsSync(templateSharedPath)) {
+    fs.copySync(templateSharedPath, appPath);    
+  } else {
+    console.error(
+      `Could not locate supplied template: ${chalk.green(templateSharedPath)}`
+    );
+    return;
+  }
+
   // Rename gitignore after the fact to prevent npm from renaming it to .npmignore
   // See: https://github.com/npm/npm/issues/1862
   try {
@@ -149,20 +160,6 @@ module.exports = function(
       const data = fs.readFileSync(path.join(appPath, 'gitignore'));
       fs.appendFileSync(path.join(appPath, '.gitignore'), data);
       fs.unlinkSync(path.join(appPath, 'gitignore'));
-    } else {
-      throw err;
-    }
-  }
-
-  try {
-    fs.moveSync(
-      path.join(appPath, 'eslintrc.js'),
-      path.join(appPath, '.eslintrc.js'),
-      []
-    );
-  } catch (err) {
-    if (err.code === 'EEXIST') {
-      fs.unlinkSync(path.join(appPath, 'eslintrc.js'));
     } else {
       throw err;
     }
