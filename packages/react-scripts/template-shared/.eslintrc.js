@@ -27,7 +27,6 @@ module.exports = {
     'object-curly-newline': 1,
     'object-curly-spacing': [1, 'never'],
     'object-property-newline': 1,
-    'linebreak-style': [1, 'unix'],
     'block-spacing': [1, 'never'],
     'space-infix-ops': 1,
     'space-unary-ops': [1, {'words': true, 'nonwords': false}],
