@@ -7,7 +7,7 @@
     "antd-react-scripts",
     "antd react scripts"
   ],
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Configuration and scripts for Create React App and antd.",
   "repository": {
     "type": "git",
@@ -38,8 +38,8 @@
   "dependencies": {
     "@babel/core": "7.4.3",
     "@svgr/webpack": "4.1.0",
-    "@typescript-eslint/eslint-plugin": "1.6.0",
-    "@typescript-eslint/parser": "1.6.0",
+    "@typescript-eslint/eslint-plugin": "1.13.0",
+    "@typescript-eslint/parser": "1.13.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.5",
